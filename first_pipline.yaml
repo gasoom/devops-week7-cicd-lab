@@ -1,0 +1,30 @@
+name: DevOps week 7 Day 1 pipline
+
+on: 
+push: 
+branches:[main]
+workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+system_inspection:
+name: runner Diagnostics & Healthcheck
+runs-on: ubuntu-latest
+steps:
+- name: step 1: -Clone Repository
+uses: actions/checkout@v4 
+- name: step 2 - Display Engeneer Identity
+run: |
+echo "================================================="
+echo "DevOps CI/CD Track - Week 7 - Day 1"
+echo "Lead Engineer: Abualgasim Hazim"
+echo "================================================="
+
+- name: step 3 - Verify Installed Infrastructure
+run: |
+echo "Linux Kernel : $(uname -r)"
+echo "Docker CLI: $(docker --version)"
+echo "Docker Compose: $(docker compose version)"
+echo "Git CLI: $(git --version)"
+- name:step 4 - Execution Success Marker
+run: echo "CI Pipline status: ALL HEALTH PASSED (100% OK)"
